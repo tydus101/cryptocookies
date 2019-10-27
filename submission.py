@@ -37,7 +37,7 @@ requiredValues.append(np.random.random())
 len(requiredValues)
 #######################################################
 
-
+# Based off of: https://stackoverflow.com/questions/50731785/create-random-shape-contour-using-matplotlib
 #Constructs the Cookie Cutter!
 n = len(phrase) # Number of possibly sharp edges
 r = .7 # magnitude of the perturbation from the unit circle, 
