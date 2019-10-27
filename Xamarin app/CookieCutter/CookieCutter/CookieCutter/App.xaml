@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+             x:Class="CookieCutter.App">
+	<Application.Resources>
+
+		<!-- Application resource dictionary -->
+        <!--BackgroundGradients-->
+        <Color x:Key="BackgroundGradientStartColor">#12D1F8</Color>
+        <Color x:Key="BackgroundGradientMidColor">#D6D7E3</Color>
+        <Color x:Key="BackgroundGradientEndColor">#68045B</Color>
+
+
+        <!-- Styles -->
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="#1A3144"/>
+            <Setter Property="BarTextColor" Value="White"/>
+        </Style>
+        <!-- Styles -->
+    </Application.Resources>
+</prism:PrismApplication>
