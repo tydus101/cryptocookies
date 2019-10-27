@@ -1,8 +1,8 @@
 import string
 import matplotlib
 import matplotlib.pyplot as plt
-
-
+import matplotlib.patches as patches 
+from matplotlib.path import Path ## from matplotlib.path import Path
 import numpy as np
 import random
 
@@ -14,7 +14,7 @@ t = np.arange(0.0, 26.0*3, 1)
 fig, ax = plt.subplots()
 ax.plot(t, v)
 ax.grid()
-plt.show()
+#plt.show() From when inside Jupyter Notebook
 ################################################
 
 
@@ -22,11 +22,10 @@ plt.show()
 phrase="yeet"
 phraseToInt=[]
 for p in phrase:
-    #x=string.ascii_lowercase.index(p)
     x= ord(p)-97
     phraseToInt.append(x)
-    print(x)
-    ############################################
+    #print(x) Debugging Line
+############################################
 
 
 #For the given phrase, takes the values needed from the seed
