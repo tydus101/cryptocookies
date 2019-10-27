@@ -31,9 +31,8 @@ for p in phrase:
 #For the given phrase, takes the values needed from the seed
 requiredValues=[]
 for p in phraseToInt:
-    requiredValues.append(v[3*p])
-    requiredValues.append(v[(3*p)+1])
-    requiredValues.append(v[(3*p)+2])
+    requiredValues.end(v[3*p:(3*p)+3])
+    
 requiredValues.append(np.random.random())
 len(requiredValues)
 #######################################################
@@ -80,4 +79,5 @@ patch = patches.PathPatch(path, facecolor='none', lw=2)
 ax.set_xlim(np.min(verts)*1.1, np.max(verts)*1.1)
 ax.set_ylim(np.min(verts)*1.1, np.max(verts)*1.1)
 ax.add_patch(patch)
+fig.savefig("yeetNonSmooth.pdf",bbox_inches='tight')
 w

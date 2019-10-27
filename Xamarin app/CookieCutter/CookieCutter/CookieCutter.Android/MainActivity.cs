@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using FFImageLoading.Forms.Platform;
 using Prism;
 using Prism.Ioc;
 
@@ -15,8 +16,10 @@ namespace CookieCutter.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            CachedImageRenderer.InitImageViewHandler();
             LoadApplication(new App(new AndroidInitializer()));
         }
     }

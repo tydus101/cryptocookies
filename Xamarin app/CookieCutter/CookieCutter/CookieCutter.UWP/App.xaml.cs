@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FFImageLoading.Forms;
+using FFImageLoading.Forms.Platform;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -53,9 +55,15 @@ namespace CookieCutter.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                List<Assembly> assembliesToInclude = new List<Assembly>();
+                List<Assembly> assembliesToInclude = new List<Assembly> {
+
+                typeof(CachedImage).GetTypeInfo().Assembly,
+                typeof(FFImageLoading.Forms.Platform.CachedImageRenderer).GetTypeInfo().Assembly
+                };
                 assembliesToInclude.Add(typeof(Xamarin.Forms.PancakeView.UWP.PancakeViewRenderer).GetTypeInfo().Assembly);
+                FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
                 Xamarin.Forms.Forms.Init(e, assembliesToInclude);
+                
 
                 //Xamarin.Forms.Forms.Init(e);
 

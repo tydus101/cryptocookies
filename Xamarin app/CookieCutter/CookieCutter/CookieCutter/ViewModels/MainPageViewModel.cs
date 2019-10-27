@@ -8,17 +8,46 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace CookieCutter.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
+        private String _imgSrc;
+        private Random r;
+        private List<String> imageDB;
         public MainPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
             Title = "Cookie Cutter Generator";
+            submitCommand = new Command(selectImage);
+            r = new Random();
+            imageDB = new List<String>
+            {
+                "example.png", "example1.png", "example2.png", "example3.png", "example4.png", "example5.png", "example6.png", "example7.png"
+            };
+          
+
         }
+
+        
+
+
+        public string imgSrc
+        {
+            get { return _imgSrc; }
+            set
+            {
+                SetProperty(ref _imgSrc, value, "imgSrc");
+            }
+        }
+        public void selectImage()
+        {
+            imgSrc = imageDB[r.Next(0, imageDB.Count)];
+        }
+        public ICommand submitCommand { private set; get; }
 
         public String IntroPancakeText
         {

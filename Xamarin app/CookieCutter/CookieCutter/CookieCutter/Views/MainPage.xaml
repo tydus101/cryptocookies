@@ -4,6 +4,7 @@
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="CookieCutter.Views.MainPage"
              Title="{Binding Title}">
 
@@ -21,7 +22,7 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="62" />
+            <RowDefinition Height="42" />
             <RowDefinition Height="130"/>
             <RowDefinition Height="38" />
             <RowDefinition Height="35"/>
@@ -30,7 +31,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="100" />
             <ColumnDefinition Width="*" />
             
         </Grid.ColumnDefinitions>
@@ -38,7 +41,7 @@
         <skia:SKCanvasView
             x:Name="BackgroundGradient"
             Grid.RowSpan="7"
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="4"
             HorizontalOptions="Fill"
             PaintSurface="BackgroundGradient_PaintSurface"
             
@@ -47,16 +50,21 @@
                 <behaviors:EventToCommandBehavior Command="{Binding BackgroundGradient_PaintSurface}" EventName="PaintSurface"/>
             </skia:SKCanvasView.Behaviors>
         </skia:SKCanvasView>
-        
-        <yummy:PancakeView Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="White" CornerRadius="10,10,10,10" IsClippedToBounds="true" HorizontalOptions="Center"  HeightRequest="130" WidthRequest="300">
+
+        <yummy:PancakeView Grid.Row="1" Grid.ColumnSpan="4" HasShadow="True" BackgroundColor="White" CornerRadius="10,10,10,10" IsClippedToBounds="true" HorizontalOptions="Center"  HeightRequest="130" WidthRequest="300">
             <Label Text="{Binding IntroPancakeText}" Style="{StaticResource PancakeLabel}"></Label>
         </yummy:PancakeView>
-        <yummy:PancakeView Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="White" CornerRadius="10,10,10,10" IsClippedToBounds="true" HorizontalOptions="Center" Margin="0,0,0,0" HeightRequest="35" WidthRequest="300">
+        <yummy:PancakeView Grid.Row="3" Grid.ColumnSpan="4" HasShadow="True" BackgroundColor="White" CornerRadius="10,10,10,10" IsClippedToBounds="true" HorizontalOptions="Center" Margin="0,0,0,0" HeightRequest="35" WidthRequest="300">
             <Label Text="Enter text and get a random Cookie Cutter!" Style="{StaticResource PancakeLabel}"></Label>
         </yummy:PancakeView>
-        <Entry Grid.Row="5" Grid.Column="0"  Placeholder="Enter text" WidthRequest="200"></Entry>
-        <Button Grid.Row="5" Grid.Column="1" Text="Submit" Margin="0,5"    WidthRequest="100"/>
+        <Entry Grid.Row="5" Grid.Column="1"   Placeholder="Enter text" ></Entry>
+        <Button Grid.Row="5" Grid.Column="2" Text="Submit" Margin="0,5" Visual="Material" Command="{Binding submitCommand}"/>
 
+        <ffimageloading:CachedImage Grid.Row=" 6" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center"
+			WidthRequest="300" HeightRequest="300"
+			DownsampleToViewSize="true"
+			Source = "{Binding imgSrc}" IsVisible="{Binding imageVisible}">
+        </ffimageloading:CachedImage>
 
 
     </Grid>
